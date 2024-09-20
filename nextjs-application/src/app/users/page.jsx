@@ -4,6 +4,11 @@ import { Suspense } from "react";
 import Grid from "@mui/material/Grid2";
 import { Container } from "@mui/material";
 
+export const metadata = {
+  title: "Users",
+  description: "This is the Users page",
+};
+
 export default async function users() {
   const data = await getData("https://dummyjson.com/users");
   return (

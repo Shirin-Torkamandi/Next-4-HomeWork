@@ -5,6 +5,11 @@ import Grid from "@mui/material/Grid2";
 import { Container } from "@mui/material";
 import { purple } from "@mui/material/colors";
 
+export const metadata = {
+  title: "Recipes",
+  description: "This is the Recipes page",
+};
+
 export default async function recipes() {
   const data = await getData("https://dummyjson.com/recipes");
   return (

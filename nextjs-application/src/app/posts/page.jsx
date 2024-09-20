@@ -5,6 +5,11 @@ import Grid from "@mui/material/Grid2";
 import { Container } from "@mui/material";
 import { indigo } from "@mui/material/colors";
 
+export const metadata = {
+  title: "Posts",
+  description: "This is the Posts page",
+};
+
 export default async function posts() {
   const data = await getData("https://dummyjson.com/posts");
   return (

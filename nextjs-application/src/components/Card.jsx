@@ -3,12 +3,15 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import dynamic from "next/dynamic";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
+
+const LazyImage = dynamic(() => import("next/image"), {
+  loading: () => <p>Loading images...</p>,
+});
 
 export default function UsersCard({
   propPath,
@@ -21,9 +24,8 @@ export default function UsersCard({
   return (
     <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
       <Card sx={{ bgcolor: propColor, maxWidth: 250 }}>
-        <Suspense fallback={<p>Loading image...</p>}>
-          {propImage && <CardMedia sx={{ height: 100 }} image={propImage} />}
-        </Suspense>
+        {propImage && <LazyImage src={propImage} width={250} height={100} />}
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="h5">
             {propFullName}
